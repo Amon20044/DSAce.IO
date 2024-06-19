@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FBBC04; /* Yellow */
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .companyName {
+    color: #000; /* Black */
+    text-decoration: none;
+  }
+  
+  .navLinks {
+    display: flex;
+  }
+  
+  .navLink {
+    margin-left: 20px;
+    color: #000; /* Black */
+    text-decoration: none;
+  }
+  
+  .navLink:hover {
+    text-decoration: underline;
+  }
+  
