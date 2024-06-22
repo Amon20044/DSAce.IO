@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '@/app/globals.css'; // Import the CSS file with Polymorph theme styles
 
 const KadanesAlgo = () => {
-  const [inputArray, setInputArray] = useState([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+  const [inputArray, setInputArray] = useState([4, 3, 8, 7, 2, 1, 6, 5]);
   const [maxEndingHere, setMaxEndingHere] = useState(0);
   const [maxSoFar, setMaxSoFar] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
@@ -11,21 +11,40 @@ const KadanesAlgo = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [customArrayInput, setCustomArrayInput] = useState('');
   const [iterations, setIterations] = useState(0); // State for number of iterations
-  
+  const [magnitudeArray, setMagnitudeArray] = useState([]);
+  const [normalizedArray, setNormalizedArray] = useState([]);
+
+  // Function to calculate magnitude of the array
+  const calculateMagnitude = (array) => {
+    const magnitudeArray = array.map(num => Math.abs(num));
+    return magnitudeArray;
+  };
+
+  // Function to normalize heights of the array
+  const normalizeHeights = (array) => {
+    const max = Math.max(...array.map(Math.abs)); // Calculate max of absolute values
+    const normalizedArray = array.map(num => Math.abs(num) / max); // Normalize each element
+    return normalizedArray;
+  };
 
   const runKadaneAlgorithm = async () => {
     setIsRunning(true);
+
+    const magnitudeArray = calculateMagnitude(inputArray);
+    const normalizedArray = normalizeHeights(inputArray);
+    setMagnitudeArray(magnitudeArray);
+    setNormalizedArray(normalizedArray);
+
     let currentMax = inputArray[0];
     let globalMax = inputArray[0];
     let start = 0;
     let tempStartIndex = 0;
     let tempEndIndex = 0;
     let iterationCount = 0;
-    const startTime = performance.now();
 
     for (let i = 1; i < inputArray.length; i++) {
       // Simulate delay for each iteration
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjusted delay for smoother visualization
       
       iterationCount++;
 
@@ -50,8 +69,6 @@ const KadanesAlgo = () => {
       setIterations(iterationCount);
     }
 
-    const endTime = performance.now();
-
     setIsRunning(false);
   };
 
@@ -62,7 +79,8 @@ const KadanesAlgo = () => {
     setEndIndex(0);
     setCustomArrayInput('');
     setIterations(0);
-
+    setMagnitudeArray([]);
+    setNormalizedArray([]);
   };
 
   const handleCustomArrayChange = (event) => {
@@ -72,6 +90,7 @@ const KadanesAlgo = () => {
   const handleCustomArraySubmit = () => {
     const customArray = customArrayInput.split(',').map(num => parseInt(num.trim(), 10));
     setInputArray(customArray);
+    resetValues();
   };
 
   const renderArray = () => {
@@ -81,8 +100,9 @@ const KadanesAlgo = () => {
           <div
             key={index}
             className={`array-element ${index >= startIndex && index <= endIndex ? 'highlight' : ''}`}
+            style={{ height: `${normalizedArray[index] * 100}%` }}
           >
-            {num}
+            <div className="array-element-value">{num}</div>
           </div>
         ))}
       </div>
@@ -104,7 +124,6 @@ const KadanesAlgo = () => {
         <p>Max Subarray Sum: {maxSoFar}</p>
         <p>Subarray: [{inputArray.slice(startIndex, endIndex + 1).join(', ')}]</p>
         <p>Iterations: {iterations}</p>
-
       </div>
       {renderArray()}
       <div className="custom-array">

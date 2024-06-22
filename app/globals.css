@@ -43,7 +43,7 @@ body {
 .array-container {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   animation: fadeIn 0.6s ease; /* Fade in animation */
 }
 
@@ -227,6 +227,73 @@ body {
 /* Footer styles */
 .Footer{
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Array container styles */
+.array-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 300px; /* Adjust height as needed */
+  border: 1px solid #ccc;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Array block styles */
+.array-block {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  text-align: center;
+  margin: 0 5px;
+  width: 30px; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 5px 5px 0 0;
+  transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.array-block.highlight {
+  background-color: #FF5722; /* Orange */
+}
+
+
+.tree-node {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: background-color 0.1s ease;
+}
+
+.tree-node.highlighted {
+  background-color: yellow;
+}
+
+.tree-container {
+  display: flex;
+  justify-content: center;
+}
+
+.controls {
+  margin-bottom: 1em;
+}
+
+.container {
+  text-align: center;
+  padding: 2em;
+}
+
