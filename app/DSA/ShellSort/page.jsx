@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import '@/app/globals.css'; 
 
@@ -7,8 +7,14 @@ const ShellSortVisualization = () => {
   const [inputArray, setInputArray] = useState([4, 3, 8, 7, 2, 1, 6, 5]);
   const [isRunning, setIsRunning] = useState(false);
   const [customArrayInput, setCustomArrayInput] = useState('');
-  const [audioContext] = useState(() => new (window.AudioContext || window.webkitAudioContext)());
+  const [audioContext, setAudioContext] = useState(null);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      setAudioContext(new AudioContext());
+    }
+  }, []);
   const getNormalizedHeight = (value, min, max) => {
     const minHeight = 20;
     const maxHeight = 200;
