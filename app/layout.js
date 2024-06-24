@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <div className="max-w-3xl mx-auto p-4">
           <div className="mt-8">{children}</div>
         </div>
-        <div className="Footer">
+        <div className="Footer bottom-0" >
         <Footer/>
         </div>
       </body>

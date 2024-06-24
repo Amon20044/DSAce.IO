@@ -7,6 +7,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <h1>Welcome to DSA Visualizations</h1>
+      <h3>General Algorithms</h3>
       <ul className="topic-list">
         <ul>
           <Link href="/DSA/KadenesAlgo" className='Algo'>Kadane's Algorithm</Link>
@@ -26,15 +27,16 @@ const HomePage = () => {
         <ul>
           <Link href="/DSA/Trees" className='Algo'>Trees</Link>
         </ul>
-        <ul>Coming Soon ...</ul>
-        <ul>...</ul>
-        <ul>...</ul>
-        <ul>...</ul>
-        <ul>...</ul>
-        <ul>...</ul>
-        <ul>...</ul>
-        <ul>...</ul>
+        <ul>Coming More...</ul>
+        
 
+        {/* Add more topics as needed */}
+      </ul>
+      <h3>Leetcode Example Algorithms</h3>
+      <ul className="topic-list">
+        <ul>
+          <Link href="/DSA/Leetcode-MaximizeMinDist-GasStations" className='Algo'>Leetcode-Minimize-Max-Dist-Gas-Stations</Link>
+        </ul>
         {/* Add more topics as needed */}
       </ul>
 
