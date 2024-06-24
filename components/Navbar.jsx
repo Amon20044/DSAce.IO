@@ -10,10 +10,10 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navLinks">
-          <Link href="https://www.linkedin.com/your-linkedin" className='navLink'>
+          <Link href="https://www.linkedin.com/in/amon-sharma-ab8a15216/" className='navLink'>
             LinkedIn
           </Link>
-          <Link href="https://github.com/your-github" className='navLink'>
+          <Link href="https://github.com/Amon20044" className='navLink'>
             GitHub
           </Link>
         </div>
